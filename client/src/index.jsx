@@ -7,7 +7,7 @@ import RepoList from './components/RepoList.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       repos: []
     }
 
@@ -28,3 +28,11 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+$(document).ready(function() {
+  $('button').click(function(e) {
+  $.post('/repos', function(data) {
+    console.log(data);
+  });
+})
+});

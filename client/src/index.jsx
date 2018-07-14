@@ -15,7 +15,10 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
+
+    $.post('/repos', {name: term}, function(data) {
+      console.log(data);
+    });
   }
 
   render () {
@@ -28,11 +31,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-$(document).ready(function() {
-  $('button').click(function(e) {
-  $.post('/repos', function(data) {
-    console.log(data);
-  });
-})
-});

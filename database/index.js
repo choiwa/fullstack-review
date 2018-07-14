@@ -8,7 +8,7 @@ db.once('open', function() {
 })
 
 let repoSchema = mongoose.Schema({
-  repoId: Number,
+  _id: Number,
   repoName: String,
   ownerName: String,
   ownerId: Number,
@@ -30,4 +30,4 @@ let save = (repo) => {
 module.exports.save = save;
 
 //testing purpose
-// save({repoId: 1, repoName: 'hello world', ownerName: 'joyce', ownerId: 1, forksCount:0});
+save({_id: 1, repoName: 'hello world', ownerName: 'joyce', ownerId: 1, forksCount:0});

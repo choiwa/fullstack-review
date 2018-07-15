@@ -27,7 +27,19 @@ let save = (repo) => {
   });
 };
 
-module.exports.save = save;
+let findAll = (callback) => {
+  Repo.find({}).limit(25).sort({forksCount: -1}).exec(callback);
+}
+
+module.exports = {
+  save: save,
+  findAll: findAll
+}
+
 
 //testing purpose
 // save({_id: 1, repoName: 'hello world', ownerName: 'joyce', ownerId: 1, forksCount:0});
+
+findAll(function(err, data) {
+  console.log(data);
+});

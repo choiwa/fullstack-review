@@ -4,30 +4,38 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       repos: []
     }
-
   }
 
   search (term) {
     console.log(`${term} was searched`);
-
+    self = this;
     $.post('/repos', {name: term}, function(data) {
-      console.log(data);
-      //console.log('id', data[0].id, 'repoName', data[0].name, 'ownerName', data[0].owner.login, 'forksCount', data[0].forks);
-      //console.log(data[0].owner.login)
+      self.setState({repos: data});
+    });
+  }
+
+  componentDidMount() {
+    //console.log('this is this', this);
+    self = this;
+    $.get('/repos', null, function(data) {
+      //console.log(self)
+      self.setState({repos: data})
     });
   }
 
   render () {
+
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
       <Search onSearch={this.search.bind(this)}/>
+      <RepoList repos={this.state.repos}/>
     </div>)
   }
 }

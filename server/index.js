@@ -16,9 +16,7 @@ app.post('/repos', function (req, res) {
       console.log(err);
     } else {
       var savedRepo = [];
-      // result.forEach(repo=> {
-      //   console.log(repo.name, repo.id, repo.owner.login);
-      // })
+
       result.forEach(repo => {
         var information = {_id: repo.id, repoName: repo.name, ownerName: repo.owner.login, ownerId: repo.owner.id, forksCount: repo.forks};
 
@@ -28,8 +26,6 @@ app.post('/repos', function (req, res) {
       res.send(savedRepo);
     }
   });
-
-  //repo.save(req.body);
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
@@ -40,6 +36,10 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+
+  database.findAll(function(err, data) {
+    res.send(data);
+  });
 });
 
 let port = 1128;

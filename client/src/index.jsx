@@ -18,6 +18,8 @@ class App extends React.Component {
 
     $.post('/repos', {name: term}, function(data) {
       console.log(data);
+      //console.log('id', data[0].id, 'repoName', data[0].name, 'ownerName', data[0].owner.login, 'forksCount', data[0].forks);
+      //console.log(data[0].owner.login)
     });
   }
 

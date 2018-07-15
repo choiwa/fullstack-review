@@ -30,4 +30,4 @@ let save = (repo) => {
 module.exports.save = save;
 
 //testing purpose
-save({_id: 1, repoName: 'hello world', ownerName: 'joyce', ownerId: 1, forksCount:0});
+// save({_id: 1, repoName: 'hello world', ownerName: 'joyce', ownerId: 1, forksCount:0});

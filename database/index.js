@@ -12,7 +12,7 @@ let repoSchema = mongoose.Schema({
   repoName: String,
   ownerName: String,
   ownerId: Number,
-  forksCount: Number
+  forksCount: Number,
 });
 
 // turn this into model so it can be used
